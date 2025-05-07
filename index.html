@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaVault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="alvodagraca.css" rel="stylesheet">
+  <link href=server.js></script>
+</head>
+<body>
+  <header>
+    <div class="logo">MediaVault</div>
+    <div class="actions">
+      <button>+ Novo Upload</button>
+      <button>Configurações</button>
+    </div>
+  </header>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Buscar arquivos..." />
+  </div>
+  <div class="filters">
+    <button onclick="filterCards('todos')">Todos</button>
+    <button onclick="filterCards('audio')">Áudio</button>
+    <button onclick="filterCards('video')">Vídeo</button>
+  </div>
+  <div class="grid" id="cardGrid">
+    <!-- Cards injetados por JavaScript -->
+  </div>
+
+  <script>
+    const arquivos = [
+      { nome: "Música Relaxante.mp3", tipo: "Música", tamanho: "5.2 MB", data: "12/05/2023", icone: "fa-music", categoria: "audio" },
+      { nome: "Podcast Episódio 42.mp3", tipo: "Podcast", tamanho: "28.7 MB", data: "05/06/2023", icone: "fa-podcast", categoria: "audio" },
+      { nome: "Tutorial Photoshop.mp4", tipo: "Tutoriais", tamanho: "125 MB", data: "18/05/2023", icone: "fa-film", categoria: "video" },
+      { nome: "Animação 3D Demo.mp4", tipo: "Animações", tamanho: "78.3 MB", data: "22/06/2023", icone: "fa-video", categoria: "video" },
+      { nome: "Efeitos Sonoros Pack.zip", tipo: "Efeitos Sonoros", tamanho: "421 MB", data: "30/06/2023", icone: "fa-volume-up", categoria: "audio" },
+      { nome: "Filme Documentário.mp4", tipo: "Filmes", tamanho: "1.2 GB", data: "02/07/2023", icone: "fa-clapperboard", categoria: "video" }
+    ];
+
+    function renderCards(filtro = "todos") {
+      const grid = document.getElementById("cardGrid");
+      grid.innerHTML = "";
+      const filtrados = arquivos.filter(a => filtro === "todos" || a.categoria === filtro);
+      filtrados.forEach(arq => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="icon"><i class="fas ${arq.icone}"></i></div>
+          <div class="name">${arq.nome}</div>
+          <div class="info">${arq.tipo} • ${arq.tamanho}</div>
+          <div class="info">Adicionado: ${arq.data}</div>
+          <div class="download"><i class="fas fa-download"></i></div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterCards(categoria) {
+      renderCards(categoria);
+    }
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      const termo = e.target.value.toLowerCase();
+      const grid = document.getElementById("cardGrid");
+      const cards = grid.querySelectorAll(".card");
+      cards.forEach(card => {
+        const nome = card.querySelector(".name").textContent.toLowerCase();
+        card.style.display = nome.includes(termo) ? "block" : "none";
+      });
+    });
+
+    // Renderizar ao carregar
+    renderCards();
+  </script>
+</body>
+</html>
