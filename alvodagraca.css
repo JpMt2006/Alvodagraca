@@ -1,88 +1,115 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-  body {
-    background: #f5f7fa;
-    color: #333;
-  }
-  header {
-    background: #3b82f6;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  header .actions button {
-    background: white;
-    color: #3b82f6;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  .search {
-    margin: 1.5rem auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  .search input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-  }
-  .filters {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-  }
-  .filters button {
-    background: none;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    color: #3b82f6;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem 2rem;
-  }
-  .card {
-    background: white;
-    padding: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .card .icon {
-    font-size: 2rem;
-    color: #3b82f6;
-  }
-  .card .name {
-    font-weight: 600;
-  }
-  .card .info {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  .card .download {
-    margin-top: auto;
-    text-align: right;
-    color: #3b82f6;
-    cursor: pointer;
-  }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f6f8fb;
+  color: #333;
+}
+
+header {
+  background-color: #2e39d4;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.actions button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #2e39d4;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.actions button i {
+  margin-right: 0.5rem;
+}
+
+main {
+  padding: 2rem;
+}
+
+#search {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #444;
+  display: flex;
+  align-items: center;
+}
+
+.filters button.active,
+.filters button:hover {
+  color: #2e39d4;
+}
+
+.filters button i {
+  margin-right: 0.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.icon {
+  font-size: 2rem;
+  color: #2e39d4;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.2rem 0;
+}
+
+.desc,
+.date {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0.1rem 0;
+}
+
+.download-icon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #2e39d4;
+  cursor: pointer;
+}

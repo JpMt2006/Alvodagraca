@@ -1,78 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>MediaVault</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link href="alvodagraca.css" rel="stylesheet">
-  <link href=server.js></script>
+  <link rel="stylesheet" href="alvodagraca.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <div class="logo">MediaVault</div>
+    <div class="logo"><i class="fas fa-home"></i> MediaVault</div>
     <div class="actions">
-      <button>+ Novo Upload</button>
-      <button>Configurações</button>
+      <button class="upload"><i class="fas fa-upload"></i> Novo Upload</button>
+      <button class="config"><i class="fas fa-cog"></i> Configurações</button>
     </div>
   </header>
-  <div class="search">
-    <input type="text" id="searchInput" placeholder="Buscar arquivos..." />
-  </div>
-  <div class="filters">
-    <button onclick="filterCards('todos')">Todos</button>
-    <button onclick="filterCards('audio')">Áudio</button>
-    <button onclick="filterCards('video')">Vídeo</button>
-  </div>
-  <div class="grid" id="cardGrid">
-    <!-- Cards injetados por JavaScript -->
-  </div>
-
   <script>
-    const arquivos = [
-      { nome: "Música Relaxante.mp3", tipo: "Música", tamanho: "5.2 MB", data: "12/05/2023", icone: "fa-music", categoria: "audio" },
-      { nome: "Podcast Episódio 42.mp3", tipo: "Podcast", tamanho: "28.7 MB", data: "05/06/2023", icone: "fa-podcast", categoria: "audio" },
-      { nome: "Tutorial Photoshop.mp4", tipo: "Tutoriais", tamanho: "125 MB", data: "18/05/2023", icone: "fa-film", categoria: "video" },
-      { nome: "Animação 3D Demo.mp4", tipo: "Animações", tamanho: "78.3 MB", data: "22/06/2023", icone: "fa-video", categoria: "video" },
-      { nome: "Efeitos Sonoros Pack.zip", tipo: "Efeitos Sonoros", tamanho: "421 MB", data: "30/06/2023", icone: "fa-volume-up", categoria: "audio" },
-      { nome: "Filme Documentário.mp4", tipo: "Filmes", tamanho: "1.2 GB", data: "02/07/2023", icone: "fa-clapperboard", categoria: "video" }
-    ];
+    async function uploadFile() {
+      const file = document.getElementById('fileInput').files[0];
+      if (!file) return alert('Selecione um arquivo');
 
-    function renderCards(filtro = "todos") {
-      const grid = document.getElementById("cardGrid");
-      grid.innerHTML = "";
-      const filtrados = arquivos.filter(a => filtro === "todos" || a.categoria === filtro);
-      filtrados.forEach(arq => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="icon"><i class="fas ${arq.icone}"></i></div>
-          <div class="name">${arq.nome}</div>
-          <div class="info">${arq.tipo} • ${arq.tamanho}</div>
-          <div class="info">Adicionado: ${arq.data}</div>
-          <div class="download"><i class="fas fa-download"></i></div>
-        `;
-        grid.appendChild(card);
-      });
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const status = document.getElementById('status');
+      status.innerText = 'Enviando...';
+
+      try {
+        const response = await fetch('http://localhost:3000/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          status.innerText = `Upload concluído! ID: ${result.fileId}`;
+        } else {
+          status.innerText = `Erro: ${result.error}`;
+        }
+      } catch (err) {
+        status.innerText = `Falha: ${err.message}`;
+      }
     }
-
-    function filterCards(categoria) {
-      renderCards(categoria);
-    }
-
-    document.getElementById("searchInput").addEventListener("input", (e) => {
-      const termo = e.target.value.toLowerCase();
-      const grid = document.getElementById("cardGrid");
-      const cards = grid.querySelectorAll(".card");
-      cards.forEach(card => {
-        const nome = card.querySelector(".name").textContent.toLowerCase();
-        card.style.display = nome.includes(termo) ? "block" : "none";
-      });
-    });
-
-    // Renderizar ao carregar
-    renderCards();
   </script>
+  <main>
+    <input type="text" id="search" placeholder="Buscar arquivos...">
+    
+    <div class="filters">
+      <button class="active"><i class="fas fa-layer-group"></i> Todos</button>
+      <button><i class="fas fa-music"></i> Áudio</button>
+      <button><i class="fas fa-video"></i> Vídeo</button>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-music icon"></i>
+        <p class="title">Música Relaxante.mp3</p>
+        <p class="desc">Música · 5.2 MB</p>
+        <p class="date">Adicionado: 12/05/2023</p>
+        <i class="fas fa-download download-icon"></i>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-podcast icon"></i>
+        <p class="title">Podcast Episódio 42.mp3</p>
+        <p class="desc">Podcast · 28.7 MB</p>
+        <p class="date">Adicionado: 05/06/2023</p>
+        <i class="fas fa-download download-icon"></i>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-film icon"></i>
+        <p class="title">Tutorial Photoshop.mp4</p>
+        <p class="desc">Tutoriais · 125 MB</p>
+        <p class="date">Adicionado: 18/05/2023</p>
+        <i class="fas fa-download download-icon"></i>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-cube icon"></i>
+        <p class="title">Animação 3D Demo.mp4</p>
+        <p class="desc">Animações · 78.3 MB</p>
+        <p class="date">Adicionado: 22/06/2023</p>
+        <i class="fas fa-download download-icon"></i>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-bullhorn icon"></i>
+        <p class="title">Efeitos Sonoros Pack.zip</p>
+        <p class="desc">Efeitos Sonoros · 421 MB</p>
+        <p class="date">Adicionado: 30/06/2023</p>
+        <i class="fas fa-download download-icon"></i>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-video icon"></i>
+        <p class="title">Filme Documentário.mp4</p>
+        <p class="desc">Filmes · 1.2 GB</p>
+        <p class="date">Adicionado: 02/07/2023</p>
+        <i class="fas fa-download download-icon"></i>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

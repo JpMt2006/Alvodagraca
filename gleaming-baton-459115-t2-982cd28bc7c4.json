@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gleaming-baton-459115-t2",
+  "private_key_id": "982cd28bc7c4ca1f3cd8088b16cbc1405b64dddb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIVhWr7bWRzVqq\nO8N22uthKEXT0lpHpnFtncPdtD2z3ekwdsoCPcHD6/1icOB1adPRO7wiVkA8ddzy\nLdFulAhzHDXVhTzSZJz/g81jMpW5c5hc9wnhEbDiB7mRJuVUgkhoEu/g+vWuCxfZ\nO2uofLPhLvDQo2DZXUl7TG7ERQJveULha2uKzMktkddgGKPL8gzs/rp+7LKypOCJ\nkBlZBOA/16gYJKtS2P6Pg3MBaUdcyQtf3pCaHAi20pK0xxtTbW2eejt0VdAOeKoT\nNGeQ5mQ7ZTCQFjZAEj2MIEtK9OHZ/2R6aDBYMkvgRMoSDpUzSSaEAnW9g+la4/Vr\n60gkn9iLAgMBAAECggEABaDO1LjbECtjP9i++eCrmoaoSOD7fVDSlfWdMjt6kko1\nNLyERKzZ0ThuMsJLZAZi7NlkmdhaJKNbtN1kVAV0+VA9E5sTJYatwctA+BJMkjG1\nAZjvyPLCHo+AqfBxopP9wcK/xM54HCQepDve9JRQSg6+CuEpeuHRNdVktT81Es7v\nXSGeGsrgxprCulyT1XHXAaL0XUuZLTajVJyjaOXMq6SN+8vdzN4xXlGNHLEQAQYA\nQTceMk3hwDH3efCmtt2vd5NUYm86FEx6NZg003/oua5rK4bR4LW10MXIjK8ApwyK\ngc99qcwWTUGpxkobcVZ5SGKMWYAZ9sh8VUbv2+xWpQKBgQD4aw0eHg1D6DVirx5y\nObBMgEou71F4zwkUKgOw8axCqmCn/p+0mrnK+8q3MT74vGqweIh+o6931GywX8pD\nomJW6c+jMBMBe/9rA+7J4tFvqTlk/gWEwPkS/D3KV5GPjMCdbIogwx4LhYIYiaUz\nHLi1gFox4NZ89O2+7/QklZZppwKBgQDOc1u+Ys8bZIZUsdDBSqYrj1r6hz7t2/DR\nCvIRYaO2S4hXBZZyS5PBa/d5erkBv04GeZR9PplsMI5MY0qRopLdD0HsuKWkEWlN\nO2Ibgf70lOKz6vYCsWtcIg0Bf/nDzKaKqTN7me8XFKo3vQhMow4MpTmIGhJHxtW6\n9Ho8oQPufQKBgEwCzYe6oEp4AeXJOaKv3i76TjigR6iUiO2fkXOR7yiS43Jj6dAk\nS9c9RiDZs6/+TxLiPrmpMiaTXBJ3rPcW98oqTrtbGWWp4FSJZoZlnbnx6LrrMxsU\nxOG3RtzkAIkRA1rn/DfcHBRgbJc/fsnt7uKyfGaoqlifxSNYXrbXAqgfAoGBAJZZ\njMbqTso0O2AS32TlaH7wt+Eb/chcFNUok4H1CbUI7RHzD83NHJ4QcvoVVgbfu4Mb\np/hOTo1sDzWyWewV6b70DZ7IGlmSFI4aYSiHU5Xrl+5PfzoW24kNg0tEWDEwKVly\nP/wT7vtwIUbWc+TcGq865NspoYaEV8L/qMXevW5BAoGAcHWzQrX4yt984/ym1kfY\n3ap5sgeE884koJPqjizLsNXXO9laqaTv/nl9oq8/S+wtIkoX0pCL0WtVgwi2hsoR\nTTnX6iBHLskpHNw3d/EZrNT4yx/aTR1eSg7zJRyAMGe/PPBcDSnhH5EE5cptyHVo\nNF/OyE5U4oGILSsvoFzhRY0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "imwalvodagraca@gleaming-baton-459115-t2.iam.gserviceaccount.com",
+  "client_id": "115687188258095585740",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/imwalvodagraca%40gleaming-baton-459115-t2.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
